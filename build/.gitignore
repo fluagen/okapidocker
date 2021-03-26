@@ -1,0 +1,6 @@
+okapi/*.jar
+okapi/lib/mod-users/*.jar
+okapi/lib/mod-login/*.jar
+okapi/lib/mod-permissions/*.jar
+okapi/lib/mod-authtoken/*.jar
+

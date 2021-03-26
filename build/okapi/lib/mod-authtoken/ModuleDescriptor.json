@@ -1,0 +1,60 @@
+{
+  "id": "mod-authtoken-2.7.0",
+  "name": "authtoken",
+  "provides": [
+    {
+      "id": "authtoken",
+      "version": "2.0",
+      "handlers" : [
+        {
+          "methods" : [ "POST" ],
+          "pathPattern" : "/token",
+          "permissionsRequired": []
+        },
+        {
+          "methods" : [ "POST" ],
+          "pathPattern" : "/refreshtoken",
+          "permissionsRequired": []
+        },
+        {
+          "methods" : [ "POST" ],
+          "pathPattern" : "/refresh",
+          "permissionsRequired": []
+        }
+      ]
+    }
+  ],
+  "requires" : [
+    {
+      "id" : "permissions",
+      "version" : "5.3"
+    },
+    {
+      "id" : "users",
+      "version" : "15.0"
+    }
+  ],
+  "filters" : [
+    {
+      "methods" : [ "*" ],
+      "pathPattern" : "/*",
+      "phase" : "auth",
+      "type" : "headers"
+    }
+  ],
+  "launchDescriptor": {
+    "dockerImage": "mod-authtoken:2.7.0",
+    "dockerPull": false,
+    "dockerArgs": {
+      "HostConfig": {
+        "Memory": 357913941,
+        "PortBindings": { "8081/tcp": [ { "HostPort": "%p" } ] }
+      }
+    },
+    "env": [
+      { "name": "JAVA_OPTIONS",
+        "value": "-XX:MaxRAMPercentage=66.0 -Dcache.permissions=true"
+      }
+    ]
+  }
+}

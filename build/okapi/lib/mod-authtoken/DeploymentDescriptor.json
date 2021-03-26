@@ -1,0 +1,7 @@
+{
+  "srvcId": "mod-authtoken-2.7.0",
+  "nodeId": "localhost",
+  "descriptor": {
+    "exec": "java -jar /okapi/lib/mod-authtoken/mod-authtoken-fat.jar -Dport=%p"
+  }
+}

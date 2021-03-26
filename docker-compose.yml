@@ -1,24 +1,21 @@
 version: '3'
 services:
   okapi:
-    build: .
+    image: fluagen/okapi:4.7.2
     ports:
       - 9130:9130
       - 5005-5009:5005-5009
     container_name: okapi
-    volumes:
-      - ./repo/:/app/repo
-      - ./init.d/:/app/init.d
     depends_on:
       - postgres
     links:
       - postgres
   postgres:
-    image: "postgres"
+    image: "postgres:10.16"
     volumes:
-      - ./db/init.d/:/docker-entrypoint-initdb.d/
+      - ./db/:/docker-entrypoint-initdb.d/
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: 111111
+      POSTGRES_PASSWORD: postgres
       PGDATA: /var/lib/postgresql/data/pgdata
