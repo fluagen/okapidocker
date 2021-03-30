@@ -6,6 +6,8 @@ services:
       - 9130:9130
       - 5005-5009:5005-5009
     container_name: okapi
+    volumes:
+      - ./mods/:/mods
     depends_on:
       - postgres
     links:
