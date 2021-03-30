@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-db_host=${MODULES_DB_HOST-"postgres"}
-db_port=${MODULES_DB_PORT-"5432"}
-db_database=${MODULES_DB_DATABASE-"okapi_modules"}
-db_username=${MODULES_DB_USERNAME-"folio_admin"}
-db_password=${MODULES_DB_PASSWORD-"folio_admin"}
+db_host=${MODULE_DB_HOST-"postgres"}
+db_port=${MODULE_DB_PORT-"5432"}
+db_database=${MODULE_DB_DATABASE-"okapi_modules"}
+db_username=${MODULE_DB_USERNAME-"folio_admin"}
+db_password=${MODULE_DB_PASSWORD-"folio_admin"}
 
 
 

@@ -4,7 +4,6 @@ services:
     image: fluagen/okapi:4.7.2
     ports:
       - 9130:9130
-      - 5005-5009:5005-5009
     container_name: okapi
     volumes:
       - ./mods/:/mods
