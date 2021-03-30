@@ -1,12 +1,17 @@
 #!/bin/bash
 
-# 等待数据库启动
+### 准备环境
+/okapi/init-env.sh
 sleep 5;
 
-# 部署 okapi
+### 启动 okapi
 java -jar \
  -Dstorage=postgres \
- -Dpostgres_host=postgres \
+ -Dpostgres_host=${OKAPI_DB_HOST-"postgres"} \
+ -Dpostgres_port=${OKAPI_DB_PORT-"5432"} \
+ -Dpostgres_database=${OKAPI_DB_DATABASE-"okapi"} \
+ -Dpostgres_username=${OKAPI_DB_USERNAME-"okapi"} \
+ -Dpostgres_password=${OKAPI_DB_PASSWORD-"okapi25"} \
  -Dpostgres_db_init=0 \
  /okapi/okapi-core-fat.jar dev > okapi.log &
 
