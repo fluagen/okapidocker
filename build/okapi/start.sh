@@ -13,7 +13,7 @@ java -jar \
  -Dpostgres_username=${OKAPI_DB_USERNAME-"okapi"} \
  -Dpostgres_password=${OKAPI_DB_PASSWORD-"okapi25"} \
  -Dpostgres_db_init=0 \
- /okapi/okapi-core-fat.jar dev > okapi.log &
+ /okapi/okapi-core-fat.jar dev > /okapi/logs/okapi.log &
 
 while ! echo exit | nc localhost 9130; do
 	sleep 1;

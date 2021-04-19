@@ -1,5 +1,5 @@
 {
-  "id": "mod-authtoken-2.7.0",
+  "id": "mod-authtoken-2.4.0",
   "name": "authtoken",
   "provides": [
     {
@@ -8,18 +8,15 @@
       "handlers" : [
         {
           "methods" : [ "POST" ],
-          "pathPattern" : "/token",
-          "permissionsRequired": []
+          "pathPattern" : "/token"
         },
         {
           "methods" : [ "POST" ],
-          "pathPattern" : "/refreshtoken",
-          "permissionsRequired": []
+          "pathPattern" : "/refreshtoken"
         },
         {
           "methods" : [ "POST" ],
-          "pathPattern" : "/refresh",
-          "permissionsRequired": []
+          "pathPattern" : "/refresh"
         }
       ]
     }
@@ -27,7 +24,7 @@
   "requires" : [
     {
       "id" : "permissions",
-      "version" : "5.3"
+      "version" : "5.2"
     },
     {
       "id" : "users",
@@ -43,7 +40,7 @@
     }
   ],
   "launchDescriptor": {
-    "dockerImage": "mod-authtoken:2.7.0",
+    "dockerImage": "mod-authtoken:2.4.0",
     "dockerPull": false,
     "dockerArgs": {
       "HostConfig": {

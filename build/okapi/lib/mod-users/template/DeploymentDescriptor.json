@@ -1,5 +1,5 @@
 {
-  "srvcId": "mod-users-17.3.0",
+  "srvcId": "mod-users-16.1.0",
   "nodeId": "localhost",
   "descriptor": {
     "exec": "java -jar /okapi/lib/mod-users/mod-users-fat.jar -Dhttp.port=%p",

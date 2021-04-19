@@ -1,10 +1,10 @@
 {
-  "id": "mod-users-17.3.0",
+  "id": "mod-users-16.1.0",
   "name": "users",
   "provides": [
     {
       "id": "users",
-      "version": "15.3",
+      "version": "15.1",
       "handlers" : [
         {
           "methods": [ "GET" ],
@@ -113,37 +113,12 @@
           "methods" : [ "DELETE" ],
           "pathPattern" : "/proxiesfor/{id}",
           "permissionsRequired" : [ "proxiesfor.item.delete" ]
-        },
-        {
-          "methods" : [ "GET" ],
-          "pathPattern" : "/departments",
-          "permissionsRequired" : [ "departments.collection.get" ]
-        },
-        {
-          "methods" : [ "GET" ],
-          "pathPattern" : "/departments/{id}",
-          "permissionsRequired" : [ "departments.item.get" ]
-        },
-        {
-          "methods" : [ "POST" ],
-          "pathPattern" : "/departments",
-          "permissionsRequired" : [ "departments.item.post" ]
-        },
-        {
-          "methods" : [ "PUT" ],
-          "pathPattern" : "/departments/{id}",
-          "permissionsRequired" : [ "departments.item.put" ]
-        },
-        {
-          "methods" : [ "DELETE" ],
-          "pathPattern" : "/departments/{id}",
-          "permissionsRequired" : [ "departments.item.delete" ]
         }
       ]
     },
     {
       "id": "custom-fields",
-      "version": "2.0",
+      "version": "1.2",
       "interfaceType" : "multiple",
       "handlers": [
         {
@@ -180,36 +155,71 @@
           "methods": ["GET"],
           "pathPattern": "/custom-fields/{id}/stats",
           "permissionsRequired": ["user-settings.custom-fields.item.stats.get"]
-        },
-        {
-          "methods": ["GET"],
-          "pathPattern": "/custom-fields/{id}/options/{optId}/stats",
-          "permissionsRequired": ["user-settings.custom-fields.item.option.stats.get"]
         }
       ]
     },
     {
       "id": "_tenant",
-      "version": "2.0",
-      "interfaceType" : "system",
-      "handlers" : [ {
-        "methods" : [ "POST" ],
-        "pathPattern" : "/_/tenant"
-      }, {
-        "methods" : [ "GET", "DELETE" ],
-        "pathPattern" : "/_/tenant/{id}"
-      } ]
-    },
-    {
-      "id" : "_timer",
-      "version" : "1.0",
+      "version": "1.2",
       "interfaceType" : "system",
       "handlers" : [
         {
-          "methods" : [ "POST" ],
-          "pathPattern" : "/users/expire/timer",
-          "unit" : "minute",
-          "delay" : "1"
+          "methods" : [ "POST", "DELETE" ],
+          "pathPattern" : "/_/tenant"
+        }
+      ]
+    },
+    {
+      "id": "patron-block-conditions",
+      "version": "0.1",
+      "handlers": [
+        {
+          "methods": ["GET"],
+          "pathPattern": "/patron-block-conditions",
+          "permissionsRequired": ["patron-block-conditions.collection.get"]
+        }, {
+          "methods": ["GET"],
+          "pathPattern": "patron-block-conditions/{id}",
+          "permissionsRequired": ["patron-block-conditions.item.get"]
+        }, {
+          "methods": ["POST"],
+          "pathPattern": "/patron-block-conditions",
+          "permissionsRequired": ["patron-block-conditions.item.post"]
+        }, {
+          "methods": ["PUT"],
+          "pathPattern": "/patron-block-conditions/{id}",
+          "permissionsRequired": ["patron-block-conditions.item.put"]
+        }, {
+          "methods": ["DELETE"],
+          "pathPattern": "/patron-block-conditions/{id}",
+          "permissionsRequired": ["patron-block-conditions.item.delete"]
+        }
+      ]
+    },
+    {
+      "id": "patron-block-limits",
+      "version": "0.1",
+      "handlers": [
+        {
+          "methods": ["GET"],
+          "pathPattern": "/patron-block-limits",
+          "permissionsRequired": ["patron-block-limits.collection.get"]
+        }, {
+          "methods": ["GET"],
+          "pathPattern": "patron-block-limits/{id}",
+          "permissionsRequired": ["patron-block-limits.item.get"]
+        }, {
+          "methods": ["POST"],
+          "pathPattern": "/patron-block-limits",
+          "permissionsRequired": ["patron-block-limits.item.post"]
+        }, {
+          "methods": ["PUT"],
+          "pathPattern": "/patron-block-limits/{id}",
+          "permissionsRequired": ["patron-block-limits.item.put"]
+        }, {
+          "methods": ["DELETE"],
+          "pathPattern": "/patron-block-limits/{id}",
+          "permissionsRequired": ["patron-block-limits.item.delete"]
         }
       ]
     }
@@ -331,29 +341,54 @@
       "description" : "Delete a proxyfor record"
     },
     {
-      "permissionName" : "departments.collection.get",
-      "displayName" : "departments collection get",
-      "description" : "Get a list of departments records"
+      "permissionName": "patron-block-conditions.collection.get",
+      "displayName": "Patron block conditions - get patron block condition collection",
+      "description": "Get patron block condition collection"
     },
     {
-      "permissionName" : "departments.item.get",
-      "displayName" : "departments item get",
-      "description" : "Get a single department record"
+      "permissionName": "patron-block-conditions.item.get",
+      "displayName": "Patron block conditions - get patron block condition",
+      "description": "Get patron block condition by id"
     },
     {
-      "permissionName" : "departments.item.post",
-      "displayName" : "departments item post",
-      "description" : "Create a new department record"
+      "permissionName": "patron-block-conditions.item.post",
+      "displayName": "Patron block conditions - post patron block condition",
+      "description": "Create patron block condition"
     },
     {
-      "permissionName" : "departments.item.put",
-      "displayName" : "departments item put",
-      "description" : "Edit a department record"
+      "permissionName": "patron-block-conditions.item.put",
+      "displayName": "Patron block conditions - put patron block condition",
+      "description": "Put patron block condition by id"
     },
     {
-      "permissionName" : "departments.item.delete",
-      "displayName" : "departments.item.delete",
-      "description" : "Delete a department record"
+      "permissionName": "patron-block-conditions.item.delete",
+      "displayName": "Patron block conditions - delete patron block condition",
+      "description": "Delete patron block condition by id"
+    },
+    {
+      "permissionName": "patron-block-limits.collection.get",
+      "displayName": "Patron block limits - get patron block limit collection",
+      "description": "Get patron block limit collection"
+    },
+    {
+      "permissionName": "patron-block-limits.item.get",
+      "displayName": "Patron block limits - get patron block limit",
+      "description": "Get patron block limit by id"
+    },
+    {
+      "permissionName": "patron-block-limits.item.post",
+      "displayName": "Patron block limits - post patron block limit",
+      "description": "Create patron block limit"
+    },
+    {
+      "permissionName": "patron-block-limits.item.put",
+      "displayName": "Patron block limits - put patron block limit",
+      "description": "Put patron block limit by id"
+    },
+    {
+      "permissionName": "patron-block-limits.item.delete",
+      "displayName": "Patron block limits - delete patron block limit",
+      "description": "Delete patron block limit by id"
     },
     {
       "permissionName" : "users.all",
@@ -382,11 +417,16 @@
         "proxiesfor.item.post",
         "proxiesfor.item.put",
         "proxiesfor.item.delete",
-        "departments.collection.get",
-        "departments.item.get",
-        "departments.item.post",
-        "departments.item.put",
-        "departments.item.delete"
+        "patron-block-conditions.collection.get",
+        "patron-block-conditions.item.get",
+        "patron-block-conditions.item.post",
+        "patron-block-conditions.item.put",
+        "patron-block-conditions.item.delete",
+        "patron-block-limits.collection.get",
+        "patron-block-limits.item.get",
+        "patron-block-limits.item.post",
+        "patron-block-limits.item.put",
+        "patron-block-limits.item.delete"
       ]
     },{
       "permissionName": "user-settings.custom-fields.collection.get",
@@ -419,11 +459,6 @@
       "description": "Get Custom Field Statistic"
     },
     {
-      "permissionName": "user-settings.custom-fields.item.option.stats.get",
-      "displayName": "User Custom Fields - get item option usage statistic",
-      "description": "Get Custom Field Option Statistic"
-    },
-    {
       "permissionName": "user-settings.custom-fields.all",
       "displayName": "User Custom Fields module - all permissions",
       "description": "Entire set of permissions needed to use the user custom fields",
@@ -434,14 +469,13 @@
         "user-settings.custom-fields.item.get",
         "user-settings.custom-fields.item.put",
         "user-settings.custom-fields.item.delete",
-        "user-settings.custom-fields.item.stats.get",
-        "user-settings.custom-fields.item.option.stats.get"
+        "user-settings.custom-fields.item.stats.get"
       ],
       "visible": false
     }
   ],
   "launchDescriptor": {
-    "dockerImage": "mod-users:17.3.0",
+    "dockerImage": "mod-users:16.1.0",
     "dockerPull": false,
     "dockerArgs": {
       "HostConfig": {

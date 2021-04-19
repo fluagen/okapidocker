@@ -1,5 +1,5 @@
 {
-  "srvcId": "mod-permissions-5.13.0",
+  "srvcId": "mod-permissions-5.9.0",
   "nodeId": "localhost",
   "descriptor": {
     "exec": "java -Dport=%p -jar /okapi/lib/mod-permissions/mod-permissions-fat.jar -Dhttp.port=%p",

@@ -1,5 +1,5 @@
 {
-  "srvcId": "mod-login-7.2.0",
+  "srvcId": "mod-login-6.2.0",
   "nodeId": "localhost",
   "descriptor": {
     "exec": "java -Dport=%p -jar /okapi/lib/mod-login/mod-login-fat.jar -Dhttp.port=%p",

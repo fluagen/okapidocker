@@ -1,10 +1,10 @@
 {
-  "id": "mod-permissions-5.13.0",
+  "id": "mod-permissions-5.9.0",
   "name": "permissions",
   "provides": [
     {
       "id": "permissions",
-      "version": "5.3",
+      "version": "5.2",
       "handlers" : [
         {
           "methods": [ "POST" ],
@@ -62,22 +62,18 @@
     },
     {
       "id": "_tenant",
-      "version": "2.0",
+      "version": "1.2",
       "interfaceType" : "system",
       "handlers" : [
         {
-          "methods" : [ "POST" ],
+          "methods" : [ "POST", "DELETE" ],
           "pathPattern" : "/_/tenant"
-        },
-        {
-          "methods" : [ "GET", "DELETE" ],
-          "pathPattern" : "/_/tenant/{id}"
         }
       ]
     },
     {
       "id" : "_tenantPermissions",
-      "version" : "2.0",
+      "version" : "1.0",
       "interfaceType" : "system",
       "handlers" : [
         {
@@ -162,7 +158,7 @@
 
   ],
   "launchDescriptor": {
-    "dockerImage": "mod-permissions:5.13.0",
+    "dockerImage": "mod-permissions:5.9.0",
     "dockerPull": false,
     "dockerArgs": {
       "HostConfig": {

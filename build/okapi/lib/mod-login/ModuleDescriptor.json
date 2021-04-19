@@ -1,10 +1,10 @@
 {
-  "id": "mod-login-7.2.0",
+  "id": "mod-login-6.2.0",
   "name": "login",
   "provides": [
     {
       "id": "login",
-      "version": "7.0",
+      "version": "6.0",
       "handlers" : [
         {
           "methods" : [ "POST" ],
@@ -35,7 +35,6 @@
         {
           "methods" : [ "POST" ],
           "pathPattern" : "/authn/login",
-          "permissionsRequired" : [ ],
           "modulePermissions" : [ "auth.signtoken", "auth.signrefreshtoken",
             "users.collection.get", "users.item.put", "users.item.get",
             "configuration.entries.collection.get" ]
@@ -46,19 +45,33 @@
           "permissionsRequired" : [ "login.attempts.item.get" ]
         },
         {
+          "methods" : [ "GET" ],
+          "pathPattern" : "/authn/credentials",
+          "permissionsRequired" : [ "login.collection.get", "users.collection.get" ]
+        },
+        {
+          "methods" : [ "GET" ],
+          "pathPattern" : "/authn/credentials/{id}",
+          "permissionsRequired" : [ "login.item.get" ]
+        },
+        {
           "methods" : [ "POST" ],
           "pathPattern" : "/authn/credentials",
           "permissionsRequired" : [ "login.item.post" ]
         },
         {
+          "methods" : [ "PUT" ],
+          "pathPattern" : "/authn/credentials/{id}",
+          "permissionsRequired" : [ "login.item.put" ]
+        },
+        {
           "methods" : [ "DELETE" ],
-          "pathPattern" : "/authn/credentials",
+          "pathPattern" : "/authn/credentials/{id}",
           "permissionsRequired" : [ "login.item.delete" ]
         },
         {
           "methods": [ "POST" ],
           "pathPattern" : "/authn/update",
-          "permissionsRequired" : [ ],
           "modulePermissions" : [ "users.collection.get", "configuration.entries.collection.get" ]
         },
         {
@@ -91,16 +104,12 @@
     },
     {
       "id": "_tenant",
-      "version": "2.0",
+      "version": "1.2",
       "interfaceType" : "system",
       "handlers" : [
         {
-          "methods" : [ "POST" ],
+          "methods" : [ "POST", "DELETE" ],
           "pathPattern" : "/_/tenant"
-        },
-        {
-          "methods" : [ "GET", "DELETE" ],
-          "pathPattern" : "/_/tenant/{id}"
         }
       ]
     }
@@ -113,9 +122,24 @@
   ],
   "permissionSets" : [
     {
+      "permissionName" : "login.collection.get",
+      "displayName" : "login collection get",
+      "description" : "Get a list of logins"
+    },
+    {
+      "permissionName" : "login.item.get",
+      "displayName" : "login item get",
+      "description" : "Read a single login"
+    },
+    {
       "permissionName" : "login.item.post",
       "displayName" : "login item post",
       "description" : "Add New Login"
+    },
+    {
+      "permissionName" : "login.item.put",
+      "displayName" : "login item put",
+      "description" : "Modify login info"
     },
     {
       "permissionName" : "login.item.delete",
@@ -172,7 +196,10 @@
       "displayName" : "login credentials",
       "description" : "All permissions for login credentials",
       "subPermissions" : [
+        "login.item.get",
+        "login.collection.get",
         "login.item.post",
+        "login.item.put",
         "login.item.delete",
         "login.attempts.item.get",
         "login.password.validate",
@@ -188,7 +215,7 @@
     }
   ],
   "launchDescriptor": {
-    "dockerImage": "mod-login:7.2.0",
+    "dockerImage": "mod-login:6.2.0",
     "dockerPull": false,
     "dockerCMD": [ "verify.user=true" ],
     "dockerArgs": {
