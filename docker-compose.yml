@@ -1,12 +1,14 @@
 version: '3'
 services:
   okapi:
-    image: fluagen/okapi:4.7.2
+    image: fluagen/okapi:2.40.0
     ports:
       - 9130:9130
+      - 5005-5009:5005-5009
     container_name: okapi
     volumes:
       - ./mods/:/mods
+      - ./logs/:/okapi/logs
     depends_on:
       - postgres
     links:
